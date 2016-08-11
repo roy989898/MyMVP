@@ -41,7 +41,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
 
-        loginPresent = new LoginPrestenerImpl();
+        loginPresent = new LoginPrestenerImpl(this);
     }
 
     @Override
@@ -66,6 +66,11 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     public void hideProgress() {
         progressBar.setVisibility(View.INVISIBLE);
 
+    }
+
+    @Override
+    public void toMain() {
+        //TODO to the next activity
     }
 
 
