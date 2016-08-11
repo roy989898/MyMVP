@@ -11,6 +11,8 @@ import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import za.co.riggaroo.mymvp.Presenter.LoginPrestener;
+import za.co.riggaroo.mymvp.Presenter.LoginPrestenerImpl;
 import za.co.riggaroo.mymvp.R;
 
 public class LoginActivity extends AppCompatActivity implements LoginView {
@@ -24,11 +26,22 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     @BindView(R.id.progressBar)
     ProgressBar progressBar;
 
+    private LoginPrestener loginPresent;
+
+
+    @Override
+    protected void onDestroy() {
+        loginPresent.onDestory();
+        super.onDestroy();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
+
+        loginPresent = new LoginPrestenerImpl();
     }
 
     @Override
@@ -55,7 +68,11 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
     }
 
+
     @OnClick(R.id.btLogin)
     public void onClick() {
+        String userName = edUserName.getText().toString();
+        String userPassword = edUserName.getText().toString();
+        loginPresent.vaildLogin(userName, userPassword);
     }
 }
