@@ -6,5 +6,9 @@ package za.co.riggaroo.mymvp.Presenter;
 public interface LoginPrestener{
     void vaildLogin(String name,String password);
 
+    void loginSuccess();
+
+    void loginFail();
+
     void onDestory();
 }
