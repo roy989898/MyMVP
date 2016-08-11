@@ -13,4 +13,6 @@ public interface LoginView {
 
     void hideProgress();
 
+    void toMain();
+
 }
